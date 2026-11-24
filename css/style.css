@@ -1,0 +1,152 @@
+/* КТ 6 - сетки. Вариант 3, магазин "Техника" */
+
+/* цвета вынес сюда, чтобы не повторять по сто раз */
+:root {
+    --dark: #1E1033;
+    --accent: #7C3AED;
+    --light: #F5F2FA;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;          /* обнулил, чтобы margin не мешал gap'у */
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--light);
+    color: var(--dark);
+}
+
+/* ===== каркас страницы ===== */
+/* сайдбар 220px, всё остальное - контент (1fr) */
+.page {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    gap: 16px;
+    min-height: 100vh;
+    padding: 16px;
+}
+
+/* привязка блоков к областям */
+.header  { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main    { grid-area: main; min-width: 0; } /* min-width 0 иначе main мог распирать страницу, гуглил */
+.footer  { grid-area: footer; }
+
+.header {
+    background: var(--dark);
+    color: #fff;
+    padding: 16px 20px;
+    /* тут flex только для логотипа и меню в строку, сам каркас на grid */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo { font-size: 24px; font-weight: bold; }
+.menu { display: flex; gap: 16px; }
+.menu a { color: #fff; text-decoration: none; }
+.menu a:hover { text-decoration: underline; }
+
+.sidebar {
+    background: #fff;
+    padding: 16px;
+    border: 2px solid var(--accent);
+    align-self: start; /* не тянуть сайдбар на всю высоту, он короткий */
+}
+.sidebar h2 { margin-bottom: 10px; }
+.sidebar ul { list-style: none; }
+.sidebar li { padding: 6px 0; }
+.sidebar a { color: var(--accent); text-decoration: none; }
+
+.footer {
+    background: var(--dark);
+    color: #fff;
+    padding: 14px 20px;
+    font-size: 14px;
+}
+
+/* ===== каталог ===== */
+/* auto-fit + minmax, колонки сами подстраиваются, медиазапрос не нужен */
+.catalog {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+/* первая карточка шире остальных */
+.card-featured {
+    grid-column: span 2;
+}
+
+.card {
+    background: #fff;
+    padding: 14px;
+    border: 1px solid var(--accent);
+    /* TODO: тут можно было ещё тень сделать, но не стал */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.card p { flex: 1; font-size: 14px; }
+
+/* "картинка" заглушка, вместо фото цветной блок с подписью */
+.card-img {
+    height: 140px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: bold;
+    /* place-items: center - центрирую подпись внутри блока по обеим осям
+       (чтобы не городить flex и margin: auto) */
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+.card-featured .card-img { height: 200px; }
+
+/* цена и кнопка в одну строку - тут flex можно */
+.card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.price { font-weight: bold; }
+.btn {
+    background: var(--dark);
+    color: #fff;
+    padding: 6px 14px;
+    text-decoration: none;
+}
+.btn:hover { background: var(--accent); }
+
+/* ===== мобильная версия ===== */
+@media (max-width: 768px) {
+    .page {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        /* сайдбар поднял над каталогом: фильтры удобнее видеть сразу,
+           а не листать вниз через все товары (доп. балл) */
+        grid-template-areas:
+            "header"
+            "sidebar"
+            "main"
+            "footer";
+    }
+
+    /* на телефоне колонка одна, span 2 ломал бы сетку */
+    .card-featured {
+        grid-column: auto;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .menu { flex-wrap: wrap; justify-content: center; }
+}

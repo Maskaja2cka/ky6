@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Техника — магазин электроники</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- порядок блоков специально перемешал, раскладку всё равно решает grid-area в css -->
+<div class="page">
+
+    <footer class="footer">
+        Контакты: +7 (900) 000-00-00 · shop@tehnika.example · г. Новосибирск, ул. Примерная, 1
+    </footer>
+
+    <main class="main">
+        <div class="catalog">
+
+            <!-- featured, самая первая карточка (span 2 в css) -->
+            <article class="card card-featured">
+                <div class="card-img">Ноутбук Lumen 15</div>
+                <h3>Товар дня: ноутбук Lumen 15</h3>
+                <p>Экран 15.6", 16 ГБ ОЗУ, SSD 512 ГБ. Только сегодня со скидкой 20%.</p>
+                <div class="card-bottom">
+                    <span class="price"><s>69 990 ₽</s> 55 990 ₽</span>
+                    <a class="btn" href="#">Купить</a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-img">Смартфон Nova X</div>
+                <h3>Смартфон Nova X</h3>
+                <p>6.5" AMOLED, камера 50 Мп, 256 ГБ памяти.</p>
+                <div class="card-bottom">
+                    <span class="price">32 990 ₽</span>
+                    <a class="btn" href="#">Купить</a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-img">Наушники Aura</div>
+                <h3>Наушники Aura</h3>
+                <p>Беспроводные, шумоподавление, до 30 часов работы.</p>
+                <div class="card-bottom">
+                    <span class="price">7 490 ₽</span>
+                    <a class="btn" href="#">Купить</a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-img">Планшет Tab 10</div>
+                <h3>Планшет Tab 10</h3>
+                <p>10.4", 4 ГБ ОЗУ, 128 ГБ, чехол в комплекте.</p>
+                <div class="card-bottom">
+                    <span class="price">18 990 ₽</span>
+                    <a class="btn" href="#">Купить</a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-img">Умные часы Pulse</div>
+                <h3>Умные часы Pulse</h3>
+                <p>Пульс, сон, шагомер, защита от воды.</p>
+                <div class="card-bottom">
+                    <span class="price">5 990 ₽</span>
+                    <a class="btn" href="#">Купить</a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-img">Колонка Boom</div>
+                <h3>Колонка Boom</h3>
+                <p>Портативная, Bluetooth 5.3, 12 часов звука.</p>
+                <div class="card-bottom">
+                    <span class="price">3 490 ₽</span>
+                    <a class="btn" href="#">Купить</a>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <header class="header">
+        <div class="logo">Техника</div>
+        <nav class="menu">
+            <a href="#">Каталог</a>
+            <a href="#">Акции</a>
+            <a href="#">Доставка</a>
+            <a href="#">Контакты</a>
+        </nav>
+    </header>
+
+    <aside class="sidebar">
+        <h2>Фильтры</h2>
+        <ul>
+            <li><a href="#">Цена</a></li>
+            <li><a href="#">Бренд</a></li>
+            <li><a href="#">В наличии</a></li>
+            <li><a href="#">Со скидкой</a></li>
+        </ul>
+    </aside>
+
+</div>
+
+</body>
+</html>
